@@ -8,7 +8,8 @@ import { IUsers } from '@shared/models';
   providedIn: 'root',
 })
 export class UserService {
-  usersUrl = `${environment.apiUrl}users.json`;
+  baseUrl = `${environment.apiUrl}${environment.apiPrefix}`;
+  usersUrl = `${this.baseUrl}/echo/admin`;
 
   constructor(private readonly http: HttpClient) {}
 

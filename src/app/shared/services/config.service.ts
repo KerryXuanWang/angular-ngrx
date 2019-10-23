@@ -8,7 +8,8 @@ import { environment } from '@env/environment';
   providedIn: 'root',
 })
 export class ConfigService {
-  configUrl = `${environment.apiUrl}config.json`;
+  baseUrl = `${environment.apiUrl}${environment.apiPrefix}`;
+  configUrl = `${this.baseUrl}/profile`;
 
   constructor(private readonly http: HttpClient) {}
 
