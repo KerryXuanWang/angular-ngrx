@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
@@ -23,6 +24,7 @@ import { UserComponent } from './users/user/user.component';
   declarations: [AppComponent, UsersComponent, UserComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
 
     StoreModule.forRoot(appReducers),
