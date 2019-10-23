@@ -1,0 +1,11 @@
+<div *ngIf="user$ | async as user">
+  <p>
+    Name: {{ user.name }}
+  </p>
+  <p>
+    Card Number: {{ user.cardNumber }}
+  </p>
+  <p>
+    Card Type: {{ user.cardType }}
+  </p>
+</div>
