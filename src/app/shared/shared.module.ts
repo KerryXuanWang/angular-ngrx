@@ -7,15 +7,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import {
-  NzToolTipModule,
-  NzSelectModule,
-  NzSliderModule,
-  NzNotificationModule,
-  NzPopoverModule,
-} from 'ng-zorro-antd';
-
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
@@ -25,12 +17,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     HttpClientModule,
     RouterModule,
 
-    NzToolTipModule,
-    NzSelectModule,
-    NzSliderModule,
-    NzNotificationModule,
-    NzPopoverModule,
-    NzDropDownModule,
+    NgZorroAntdModule,
   ],
   exports: [
     CommonModule,
@@ -39,12 +26,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     HttpClientModule,
     RouterModule,
 
-    NzToolTipModule,
-    NzSelectModule,
-    NzSliderModule,
-    NzNotificationModule,
-    NzPopoverModule,
-    NzDropDownModule,
+    NgZorroAntdModule,
   ],
   providers: [],
   declarations: [],

@@ -3,6 +3,8 @@ const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
+const DB = require('./db.json');
+
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 server.use(
@@ -12,8 +14,12 @@ server.use(
 );
 
 // Add custom routes before JSON Server router
-server.get('/echo/admin', (req, res) => {
-  res.jsonp(req.query);
+server.get('/total-users', (req, res) => {
+  const { gender } = req.query;
+  if (!gender || Array.isArray(gender)) {
+    return res.status(200).json(DB.users.length);
+  }
+  res.status(200).json(DB.users.filter((u) => u.gender === gender).length);
 });
 
 server.use(router);

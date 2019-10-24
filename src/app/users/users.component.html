@@ -1,19 +1,73 @@
-<table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Card Number</th>
-      <th scope="col">Card Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users$ | async"
-      (click)="navigateToUser(user.id)">
-      <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.cardNumber }}</td>
-      <td>{{ user.cardType }}</td>
-    </tr>
-  </tbody>
-</table>
+<main>
+  <nz-table #ajaxTable
+    nzShowSizeChanger
+    [nzFrontPagination]="false"
+    [nzData]="userList"
+    [nzLoading]="vo.loading"
+    [nzTotal]="vo.total"
+    [(nzPageIndex)]="pagination.page"
+    [(nzPageSize)]="pagination.limit"
+    (nzPageIndexChange)="searchData()"
+    (nzPageSizeChange)="searchData(true)">
+    <thead (nzSortChange)="sort($event)"
+      nzSingleSort>
+      <tr>
+        <th nzShowExpand></th>
+        <th nzShowSort
+          nzSortKey="name.first">Name</th>
+        <th nzShowFilter
+          [nzFilters]="filterGender"
+          (nzFilterChange)="updateFilter($event)">Gender</th>
+        <th nzShowSort
+          nzSortKey="registered.age"><span>Age</span></th>
+        <th nzShowSort
+          nzSortKey="phone"><span>Phone</span></th>
+        <th nzShowSort
+          nzSortKey="email"><span>Email</span></th>
+        <th nzShowSort
+          nzSortKey="registered.date"><span>Register Date</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor
+        let-data
+        [ngForOf]="ajaxTable.data">
+        <tr>
+          <td nzShowExpand
+            [(nzExpand)]="mapOfExpandData[data?.login.uuid]"></td>
+          <td>{{ data.name.first }} {{ data.name.last }}</td>
+          <td>{{ data.gender }}</td>
+          <td>{{ data.registered.age}}</td>
+          <td>{{ data.phone}}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.registered.date | date: 'medium'}}</td>
+        </tr>
+
+        <tr [nzExpand]="mapOfExpandData[data?.login.uuid]">
+          <td></td>
+          <td colspan="6">
+            <div class="detail-container">
+              <p>
+                <label>Country:</label>
+                <strong>{{ data.location.country }}</strong>
+              </p>
+              <p>
+                <label>State:</label>
+                <strong>{{ data.location.state }}</strong>
+              </p>
+              <p>
+                <label>City:</label>
+                <strong>{{ data.location.city }}</strong>
+              </p>
+
+              <p>
+                <label>Postcode:</label>
+                <strong>{{ data.location.postcode }}</strong>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </nz-table>
+</main>

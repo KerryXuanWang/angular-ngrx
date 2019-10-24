@@ -13,10 +13,11 @@ import {
   UserActionTypes,
   GetUserSuccess,
   GetUser,
+  GetTotalUsers,
+  GetTotalUsersSuccess,
 } from '@store/actions/user.actions';
 
 import { UserService } from '@shared/services/user.service';
-import { IUsers } from '@shared/models';
 import { userListSelector } from '@store/selectors/user.selectors';
 
 @Injectable()
@@ -24,8 +25,9 @@ export class UserEffects {
   @Effect()
   getUsers$ = this.actions$.pipe(
     ofType<GetUsers>(UserActionTypes.GET_USERS),
-    switchMap(() => this.userService.getUsers()),
-    switchMap((users: IUsers) => of(new GetUsersSuccess(users.users))),
+    map((action) => action.payload),
+    switchMap((pagination) => this.userService.getUsers(pagination)),
+    switchMap((res) => of(new GetUsersSuccess(res))),
   );
 
   @Effect()
@@ -37,6 +39,14 @@ export class UserEffects {
       const selectedUser = users.filter((user) => user.id === id)[0];
       return of(new GetUserSuccess(selectedUser));
     }),
+  );
+
+  @Effect()
+  getTotalUsers$ = this.actions$.pipe(
+    ofType<GetTotalUsers>(UserActionTypes.GET_TOTAL_USERS),
+    map((action) => action.payload),
+    switchMap((filter) => this.userService.getTotalUsers(filter)),
+    switchMap((res) => of(new GetTotalUsersSuccess(res))),
   );
 
   constructor(

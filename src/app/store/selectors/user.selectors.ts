@@ -14,3 +14,8 @@ export const selectedUserSelector = createSelector(
   usersState,
   (state: IUserState) => state.selectedUser,
 );
+
+export const totalUsersSelector = createSelector(
+  usersState,
+  (state: IUserState) => state.totalUsers,
+);

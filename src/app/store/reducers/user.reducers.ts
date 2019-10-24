@@ -17,6 +17,13 @@ export const userReducers = (state = initUserState, action: UserActions) => {
       };
     }
 
+    case UserActionTypes.GET_TOTAL_USERS_SUCCESS: {
+      return {
+        ...state,
+        totalUsers: action.payload,
+      };
+    }
+
     default:
       return state;
   }

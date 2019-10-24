@@ -32,14 +32,7 @@
                 "output": "/assets/"
               }
             ],
-            "styles": [
-              "./node_modules/ng-zorro-antd/style/index.min.css",
-              "./node_modules/ng-zorro-antd/tooltip/style/index.min.css",
-              "./node_modules/ng-zorro-antd/notification/style/index.min.css",
-              "./node_modules/ng-zorro-antd/slider/style/index.min.css",
-              "./node_modules/ng-zorro-antd/select/style/index.min.css",
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
