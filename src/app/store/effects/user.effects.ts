@@ -6,6 +6,8 @@ import { Effect, ofType, Actions } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 
+import { isArray } from 'lodash';
+
 import { IAppState } from '@store/states/app.state';
 import {
   GetUsersSuccess,
@@ -19,6 +21,7 @@ import {
 
 import { UserService } from '@shared/services/user.service';
 import { userListSelector } from '@store/selectors/user.selectors';
+import { IUser } from '@shared/models';
 
 @Injectable()
 export class UserEffects {
@@ -36,7 +39,10 @@ export class UserEffects {
     map((action) => action.payload),
     withLatestFrom(this.store.pipe(select(userListSelector))),
     switchMap(([id, users]) => {
-      const selectedUser = users.filter((user) => user.id === id)[0];
+      if (!isArray(users)) {
+        return of(new GetUserSuccess({} as IUser));
+      }
+      const selectedUser = users.filter((user) => user.id.value === id)[0];
       return of(new GetUserSuccess(selectedUser));
     }),
   );

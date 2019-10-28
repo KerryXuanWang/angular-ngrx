@@ -35,7 +35,10 @@
         <tr>
           <td nzShowExpand
             [(nzExpand)]="mapOfExpandData[data?.login.uuid]"></td>
-          <td>{{ data.name.first }} {{ data.name.last }}</td>
+          <td>
+            <a [routerLink]="['../user/' + data.id.value]">{{ data.name.first }}
+              {{ data.name.last }}</a>
+          </td>
           <td>{{ data.gender }}</td>
           <td>{{ data.registered.age}}</td>
           <td>{{ data.phone}}</td>

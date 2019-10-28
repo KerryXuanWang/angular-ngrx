@@ -18,12 +18,12 @@ interface Registered {
 
 interface Login {
   uuid: string;
-  userName: string;
+  username: string;
   md5: string;
 }
 
 export interface IUser {
-  id: string;
+  id: { name: string; value: string };
   name: Name;
   email?: string;
   phone?: string;
@@ -31,4 +31,5 @@ export interface IUser {
   location?: Location;
   registered?: Registered;
   login?: Login;
+  picture?: { large: string };
 }
