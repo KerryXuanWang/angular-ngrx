@@ -15,13 +15,11 @@ import { ConfigEffects } from '@store/effects/config.effects';
 
 import { environment } from '@env/environment';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './users/user/user.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UserComponent],
+  declarations: [AppComponent, ...routedComponents],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

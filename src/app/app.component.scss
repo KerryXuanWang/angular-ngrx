@@ -1,0 +1,23 @@
+nz-content {
+  height: calc(100vh - 64px - 70px);
+  overflow: auto;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+[nz-menu] {
+  line-height: 64px;
+}
+
+.logo {
+  display: flex;
+  margin: 16px;
+  float: left;
+  background-color: #fff;
+
+  i {
+    font-size: 30px;
+  }
+}

@@ -1,18 +1,28 @@
-<ul nz-menu
-  nzMode="horizontal">
-  <li nz-menu-item
-    routerLink="/users"
-    nzSelected>
-    <i nz-icon
-      nzType="user"></i>
-    Users
-  </li>
-
-  <li nz-menu-item>
-    <i nz-icon
-      nzType="setting"></i>
-    Settings
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<nz-layout>
+  <nz-header>
+    <div class="logo">
+      <i nz-icon
+        nzType="github"
+        nzTheme="outline"></i>
+    </div>
+    <ul nz-menu
+      nzTheme="dark"
+      nzMode="horizontal">
+      <li nz-menu-item
+        routerLink="/users"
+        active
+        routerLinkActive="active"><i nz-icon
+          nzType="user"></i>Users</li>
+      <li nz-menu-item
+        routerLink="/settings"
+        routerLinkActive="active"><i nz-icon
+          nzType="setting"></i>Settings</li>
+    </ul>
+  </nz-header>
+  <nz-content>
+    <router-outlet></router-outlet>
+  </nz-content>
+  <nz-footer>
+    Ant Design ©2019 Implement By Angular
+  </nz-footer>
+</nz-layout>
