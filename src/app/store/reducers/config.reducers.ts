@@ -1,7 +1,7 @@
 import { ConfigActionTypes, ConfigActions } from '@store/actions/config.actions';
 import { initConfigState } from '@store/states/config.state';
 
-export const configReducers = (state = initConfigState, action: ConfigActions) => {
+export function configReducers(state = initConfigState, action: ConfigActions) {
   switch (action.type) {
     case ConfigActionTypes.GET_CONFIG_SUCCESS: {
       return {
@@ -13,4 +13,4 @@ export const configReducers = (state = initConfigState, action: ConfigActions) =
     default:
       return state;
   }
-};
+}

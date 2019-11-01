@@ -1,7 +1,7 @@
 import { UserActionTypes, UserActions } from '@store/actions/user.actions';
 import { initUserState } from '@store/states/user.state';
 
-export const userReducers = (state = initUserState, action: UserActions) => {
+export function userReducers(state = initUserState, action: UserActions) {
   switch (action.type) {
     case UserActionTypes.GET_USERS_SUCCESS: {
       return {
@@ -27,4 +27,4 @@ export const userReducers = (state = initUserState, action: UserActions) => {
     default:
       return state;
   }
-};
+}

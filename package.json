@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "run-p serve json-server",
     "serve": "ng serve --disable-host-check",
-    "json-server": "cd json-server && node server.js",
-    "build": "ng build",
+    "json-server": "cd json-server && nodemon ./server.js --exec",
+    "build": "ng build --prod --no-progress --build-optimizer",
+    "build:docker": "docker image build -t angular-ngrx .",
+    "start:docker": "docker run -p 8899:80 --rm angular-ngrx",
+    "compose-build": "docker-compose build --no-cache",
+    "compose-start": "docker-compose up",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,6 +31,7 @@
     "@ngrx/store": "^8.4.0",
     "lodash": "^4.17.15",
     "ng-zorro-antd": "^8.4.0",
+    "nodemon": "^1.19.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

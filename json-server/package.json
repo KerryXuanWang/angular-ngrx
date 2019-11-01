@@ -1,0 +1,12 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon ./server.js --exec"
+  },
+  "private": true,
+  "dependencies": {
+    "json-server": "^0.15.1",
+    "nodemon": "^1.19.4"
+  }
+}
